@@ -1,5 +1,5 @@
 /** Choices for eightball messages and colors */
-const EIGHTBALL_OPTIONS = [
+const EIGHTBALL_ANSWERS = [
   { msg: "It is certain.", color: "green" },
   { msg: "It is decidedly so.", color: "green" },
   { msg: "Without a doubt.", color: "green" },
@@ -20,11 +20,11 @@ const EIGHTBALL_OPTIONS = [
   { msg: "My sources say no.", color: "red" },
   { msg: "Outlook not so good.", color: "red" },
   { msg: "Very doubtful.", color: "red" },
-]
+];
 
 /** Get random integer [0..max). */
 function getRandom(max) {
-    return Math.floor(Math.random() * max);
-  }
-  
-  export { EIGHTBALL_OPTIONS, getRandom };
+  return Math.floor(Math.random() * max);
+}
+
+export { EIGHTBALL_ANSWERS, getRandom };

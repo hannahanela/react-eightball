@@ -1,28 +1,37 @@
-import { EIGHTBALL_OPTIONS, getRandom } from "./utilities";
+import React, { useState } from "react";
+import { EIGHTBALL_ANSWERS, getRandom } from "./utilities";
+import "./EightBall.css";
 
-function EightBall({ eightball=EIGHTBALL_OPTIONS }) {
-    const [color, setColor] = useState("black");
-    const [msg, setMsg] = useState("Thank of a Question");
+/** a Magic Eightball to answer a question
+ *
+ * Props:
+ * - answers = [{msg,color}...]
+ *
+ * State:
+ * - color : black\random
+ * - message : question\answer
+ *
+ * App -> EightBall
+ */
+function EightBall({ answers = EIGHTBALL_ANSWERS }) {
+  const [color, setColor] = useState("black");
+  const [msg, setMsg] = useState("Thank of a Question");
+  //const [answerData, setAnswerData] = useState({msg=});
+  const myStyle = {
+    backgroundColor: color,
+  };
 
-    function getMessage() {
-        const idx = getRandom(eightball.length);
-        setColor(eightball[idx].color);
-        setMsg(eightball[idx].msg);
-    }
+  function getAnswer() {
+    const idx = getRandom(answers.length);
+    setColor(answers[idx].color);
+    setMsg(answers[idx].msg);
+  }
 
-    return (
-        <div onClick={getMessage}>
-            <b>{msg}</b>
-        </div>
-    )
+  return (
+    <div className="EightBall" style={myStyle} onClick={getAnswer}>
+      <div className="EightBall-text">{msg}</div>
+    </div>
+  );
 }
 
 export default EightBall;
-
-// handle random click on <div>
-// call getRandom --> choose index of array to get random eightball obj
-// EIGHTBALL_OPTIONS[idx]
-// update state
-
-// div to change radius
-// inside will display text (random and color)
